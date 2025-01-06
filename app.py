@@ -29,6 +29,7 @@ def get_secret():
     print("================")
     print(secret)
     print("================")
+    return secret
 
 st.set_page_config(
     page_title="AWS",
@@ -37,4 +38,4 @@ st.set_page_config(
 )
 
 st.header("Hi, welcome!")
-st.subheader("This is your Amazon Web Services (AWS) Streamlit deployment!", divider="rainbow")
+st.subheader(get_secret())
