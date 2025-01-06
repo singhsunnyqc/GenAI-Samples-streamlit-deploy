@@ -21,6 +21,7 @@ def get_secret():
             SecretId=secret_name
         )
     except ClientError as e:
+        print("Error is-")
         # For a list of exceptions thrown, see
         # https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
         raise e
