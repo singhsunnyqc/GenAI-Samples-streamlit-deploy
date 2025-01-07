@@ -33,7 +33,7 @@ except ClientError as e:
 
 
 db_secrets = db_secrets_value_response["SecretString"]
-openapikey_secret = openapikey_secret_value_response["SecretBinary"].decode("utf-8")
+openapikey_secret = openapikey_secret_value_response["SecretString"]
 
 
 # if "SecretString" in db_secrets_value_response:
