@@ -31,24 +31,31 @@ except ClientError as e:
     # https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
     raise e
 
-if "SecretString" in db_secrets_value_response:
-    db_secrets = db_secrets_value_response["SecretString"]
-else:
-    db_secrets = db_secrets_value_response["SecretBinary"].decode("utf-8")
 
-if "SecretString" in openapikey_secret_value_response:
-    openapikey_secret = openapikey_secret_value_response["SecretString"]
-else:
-    openapikey_secret = openapikey_secret_value_response["SecretBinary"].decode("utf-8")
+db_secrets = db_secrets_value_response["SecretString"]
+openapikey_secret = openapikey_secret_value_response["SecretBinary"].decode("utf-8")
 
 
-db_secrets = db_secrets_value_response
-openapikey_secret = openapikey_secret_value_response
+# if "SecretString" in db_secrets_value_response:
+#     db_secrets = db_secrets_value_response["SecretString"]
+# else:
+#     db_secrets = db_secrets_value_response["SecretBinary"].decode("utf-8")
 
-db_secrets = json.loads(db_secrets) if isinstance(db_secrets, str) else db_secrets
-openapikey_secret = json.loads(openapikey_secret) if isinstance(openapikey_secret, str) else openapikey_secret
+# if "SecretString" in openapikey_secret_value_response:
+#     openapikey_secret = openapikey_secret_value_response["SecretString"]
+# else:
+#     openapikey_secret = openapikey_secret_value_response["SecretBinary"].decode("utf-8")
 
 
+# db_secrets = db_secrets_value_response
+# openapikey_secret = openapikey_secret_value_response
+
+# db_secrets = json.loads(db_secrets) if isinstance(db_secrets, str) else db_secrets
+# openapikey_secret = json.loads(openapikey_secret) if isinstance(openapikey_secret, str) else openapikey_secret
+
+
+db_secrets = json.loads(db_secrets)
+openapikey_secret = json.loads(openapikey_secret)
 
 st.set_page_config(
     page_title="AWS",
