@@ -45,9 +45,14 @@ st.set_page_config(
 )
 
 st.header("Hi, welcome!")
-st.subheader(db_secrets["username"])
-st.subheader(db_secrets["password"])
-st.subheader(db_secrets["host"])
-st.subheader(db_secrets["port"])
+st.subheader(db_secrets_value_response)
+st.subheader(openapikey_secret)
+st.subheader(db_secrets_value_response)
+st.subheader(openapikey_secret)
+# st.subheader(db_secrets["username"])
+# st.subheader(db_secrets["username"])
+# st.subheader(db_secrets["password"])
+# st.subheader(db_secrets["host"])
+# st.subheader(db_secrets["port"])
 
 st.subheader(openapikey_secret)
