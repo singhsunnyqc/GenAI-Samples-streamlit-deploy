@@ -32,8 +32,8 @@ except ClientError as e:
     raise e
 
 
-db_secrets = json.loads(db_secrets_value_response)
-openapikey_secret = json.loads(openapikey_secret_value_response)
+db_secrets = db_secrets_value_response
+openapikey_secret = openapikey_secret_value_response
 
 
 
@@ -50,4 +50,4 @@ st.subheader(db_secrets["password"])
 st.subheader(db_secrets["host"])
 st.subheader(db_secrets["port"])
 
-st.subheader(openapikey_secret_value_response)
+st.subheader(openapikey_secret)
