@@ -5,8 +5,8 @@ from botocore.exceptions import ClientError
 
 #Get Secrets
 region_name = 'us-east-1'
-db_secrets = 'mysqldb'
-openapikey_secret = 'openaikey2'
+db_secrets_key = 'mysqldb'
+openapikey_secret_key = 'openaikey2'
 
 session = boto3.session.Session()
 client = session.client(
@@ -16,11 +16,11 @@ client = session.client(
 
 try:
     db_secrets_value_response = client.get_secret_value(
-        SecretId=db_secrets
+        SecretId=db_secrets_key
     )
 
     openapikey_secret_value_response = client.get_secret_value(
-        SecretId=db_secrets
+        SecretId=openapikey_secret_key
     )
 
 
@@ -30,8 +30,9 @@ except ClientError as e:
     # https://docs.aws.amazon.com/secretsmanager/latest/apireference/API_GetSecretValue.html
     raise e
 
-db_secrets_value = db_secrets_value_response['SecretString']
-openapikey_secret_value = openapikey_secret_value_response['SecretString']
+
+db_secrets = json.loads(db_secrets_value_response)
+openapikey_secret = json.loads(openapikey_secret_value_response)
 
 
 
@@ -43,5 +44,9 @@ st.set_page_config(
 )
 
 st.header("Hi, welcome!")
-st.subheader(db_secrets_value)
-st.subheader(openapikey_secret_value)
+st.subheader(db_secrets["username"])
+st.subheader(db_secrets["password"])
+st.subheader(db_secrets["host"])
+st.subheader(db_secrets["port"])
+
+st.subheader(openapikey_secret_value_response)
